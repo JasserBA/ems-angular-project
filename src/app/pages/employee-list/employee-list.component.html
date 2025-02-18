@@ -13,7 +13,9 @@
       <td>{{employee.firstName}}</td>
       <td>{{employee.lastName}}</td>
       <td>{{employee.email}}</td>
-      <td><button class="btn btn-info" routerLink="/update-employee" (click)="addEmployee(employee.id)">Update</button>
+      <td>
+        <button class="btn btn-info" routerLink="/update-employee" (click)="addEmployee(employee.id)">Update</button>
+        <button class="btn btn-danger mx-2" (click)="deleteEmployee(employee.id)">Delete</button>
       </td>
     </tr>
   </tbody>

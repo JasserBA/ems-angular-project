@@ -26,7 +26,7 @@ export class UpdateEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.empService.UpdateEmployee(this.id, this.employee).subscribe((data) => {
+    this.empService.updateEmployee(this.id, this.employee).subscribe((data) => {
       console.log(data);
       this.navigateToEmployeeList()
 

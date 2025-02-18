@@ -9,6 +9,7 @@ import { Employee } from '../class/employee';
 export class EmployeeService {
 
   private baseURL = "http://localhost:8080/api/employees"
+
   constructor(private httpCLient: HttpClient) { }
 
   getEmployeeList(): Observable<Employee[]> {
@@ -23,7 +24,11 @@ export class EmployeeService {
     return this.httpCLient.get<Employee>(`${this.baseURL}/${id}`)
   }
 
-  UpdateEmployee(id: number, employee: Employee): Observable<Object> {
+  updateEmployee(id: number, employee: Employee): Observable<Object> {
     return this.httpCLient.put(`${this.baseURL}/${id}`, employee)
+  }
+
+  deleteEmployee(id: number): Observable<Object> {
+    return this.httpCLient.delete(`${this.baseURL}/${id}`)
   }
 }

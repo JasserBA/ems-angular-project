@@ -115,6 +115,15 @@ export class EmployeeListComponent implements OnInit {
     })
   }
 
+  deleteEmployee(id: number) {
+    if (confirm(`Are you sure want to delete this user's ID? ${id}`)) {
+      this.empService.deleteEmployee(id).subscribe(data => {
+        // console.log(data)
+        this.getEmployees();
+      }, err => console.error(err))
+    }
+  }
+
   addEmployee(id: number) {
     this.router.navigate(['/update-employee', id]);
   }
