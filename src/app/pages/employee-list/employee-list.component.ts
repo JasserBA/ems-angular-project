@@ -1,3 +1,4 @@
+import { EmployeeService } from './../../service/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/class/employee';
 
@@ -9,99 +10,107 @@ import { Employee } from 'src/app/class/employee';
 export class EmployeeListComponent implements OnInit {
   employees!: Employee[];
 
-  constructor() { }
+  constructor(private empService: EmployeeService) { }
   ngOnInit(): void {
-    this.employees = [
-      {
-        id: 1,
-        "firstName": "Lesli",
-        "lastName": "Stodhart",
-        "email": "lstodhart0@pen.io"
-      },
-      {
-        id: 2,
-        "firstName": "Zorine",
-        "lastName": "Bennough",
-        "email": "zbennough1@pen.io"
-      },
-      {
-        id: 3,
-        "firstName": "Sheena",
-        "lastName": "Rebert",
-        "email": "srebert2@ifeng.com"
-      },
-      {
-        id: 4,
-        "firstName": "Gunilla",
-        "lastName": "Rolling",
-        "email": "grolling3@mediafire.com"
-      },
-      {
-        id: 5,
-        "firstName": "Zora",
-        "lastName": "Symondson",
-        "email": "zsymondson4@infoseek.co.jp"
-      },
-      {
-        id: 6,
-        "firstName": "Osbourne",
-        "lastName": "Mattisson",
-        "email": "omattisson5@last.fm"
-      },
-      {
-        id: 7,
-        "firstName": "Mychal",
-        "lastName": "Nitti",
-        "email": "mnitti6@wired.com"
-      },
-      {
-        id: 8,
-        "firstName": "Laurella",
-        "lastName": "Vogele",
-        "email": "lvogele7@printfriendly.com"
-      },
-      {
-        id: 9,
-        "firstName": "Jemmy",
-        "lastName": "Haukey",
-        "email": "jhaukey8@omniture.com"
-      },
-      {
-        id: 10,
-        "firstName": "Donn",
-        "lastName": "Oddey",
-        "email": "doddey9@nytimes.com"
-      },
-      {
-        id: 11,
-        "firstName": "Desmond",
-        "lastName": "Aymerich",
-        "email": "daymericha@edublogs.org"
-      },
-      {
-        id: 12,
-        "firstName": "Cynde",
-        "lastName": "Miskin",
-        "email": "cmiskinb@tinyurl.com"
-      },
-      {
-        id: 13,
-        "firstName": "Freida",
-        "lastName": "Weiner",
-        "email": "fweinerc@samsung.com"
-      },
-      {
-        id: 14,
-        "firstName": "Arlyne",
-        "lastName": "Marke",
-        "email": "amarked@comcast.net"
-      },
-      {
-        id: 15,
-        "firstName": "Ettie",
-        "lastName": "Caghy",
-        "email": "ecaghye@yelp.com"
-      }
-    ]
+    // this.employees = [
+    //   {
+    //     id: 1,
+    //     "firstName": "Lesli",
+    //     "lastName": "Stodhart",
+    //     "email": "lstodhart0@pen.io"
+    //   },
+    //   {
+    //     id: 2,
+    //     "firstName": "Zorine",
+    //     "lastName": "Bennough",
+    //     "email": "zbennough1@pen.io"
+    //   },
+    //   {
+    //     id: 3,
+    //     "firstName": "Sheena",
+    //     "lastName": "Rebert",
+    //     "email": "srebert2@ifeng.com"
+    //   },
+    //   {
+    //     id: 4,
+    //     "firstName": "Gunilla",
+    //     "lastName": "Rolling",
+    //     "email": "grolling3@mediafire.com"
+    //   },
+    //   {
+    //     id: 5,
+    //     "firstName": "Zora",
+    //     "lastName": "Symondson",
+    //     "email": "zsymondson4@infoseek.co.jp"
+    //   },
+    //   {
+    //     id: 6,
+    //     "firstName": "Osbourne",
+    //     "lastName": "Mattisson",
+    //     "email": "omattisson5@last.fm"
+    //   },
+    //   {
+    //     id: 7,
+    //     "firstName": "Mychal",
+    //     "lastName": "Nitti",
+    //     "email": "mnitti6@wired.com"
+    //   },
+    //   {
+    //     id: 8,
+    //     "firstName": "Laurella",
+    //     "lastName": "Vogele",
+    //     "email": "lvogele7@printfriendly.com"
+    //   },
+    //   {
+    //     id: 9,
+    //     "firstName": "Jemmy",
+    //     "lastName": "Haukey",
+    //     "email": "jhaukey8@omniture.com"
+    //   },
+    //   {
+    //     id: 10,
+    //     "firstName": "Donn",
+    //     "lastName": "Oddey",
+    //     "email": "doddey9@nytimes.com"
+    //   },
+    //   {
+    //     id: 11,
+    //     "firstName": "Desmond",
+    //     "lastName": "Aymerich",
+    //     "email": "daymericha@edublogs.org"
+    //   },
+    //   {
+    //     id: 12,
+    //     "firstName": "Cynde",
+    //     "lastName": "Miskin",
+    //     "email": "cmiskinb@tinyurl.com"
+    //   },
+    //   {
+    //     id: 13,
+    //     "firstName": "Freida",
+    //     "lastName": "Weiner",
+    //     "email": "fweinerc@samsung.com"
+    //   },
+    //   {
+    //     id: 14,
+    //     "firstName": "Arlyne",
+    //     "lastName": "Marke",
+    //     "email": "amarked@comcast.net"
+    //   },
+    //   {
+    //     id: 15,
+    //     "firstName": "Ettie",
+    //     "lastName": "Caghy",
+    //     "email": "ecaghye@yelp.com"
+    //   }
+    // ]
+
+    this.getEmployees();
+  }
+
+  private getEmployees() {
+    this.empService.getEmployeeList().subscribe(data => {
+      this.employees = data
+    })
   }
 }
