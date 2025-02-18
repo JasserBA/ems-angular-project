@@ -115,6 +115,10 @@ export class EmployeeListComponent implements OnInit {
     })
   }
 
+  viewEmployee(id: number) {
+    this.router.navigate(['/details-employee', id]);
+  }
+
   deleteEmployee(id: number) {
     if (confirm(`Are you sure want to delete this user's ID? ${id}`)) {
       this.empService.deleteEmployee(id).subscribe(data => {
