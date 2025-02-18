@@ -24,6 +24,7 @@ export class AddEmployeeComponent implements OnInit {
   private navigateToEmployeeList() {
     this.router.navigate(["/employees"])
   }
+
   onSubmit() {
     // console.log(this.newEmployee);
     this.saveEmployee()
