@@ -1,1 +1,30 @@
-<p>add-employee works!</p>
+<div class="container">
+  <div class="row">
+    <div class="card col-md-7 my-5 m-auto shadow p-4">
+      <h2>Add Employee</h2>
+      <div class="card-body">
+        <form class="text-start" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-2">
+            <!-- First Name -->
+            <label class="form-label"> First Name:</label>
+            <input class="form-control" type="text" name="firstName" id="firstName" [(ngModel)]="employee.firstName" />
+          </div>
+          <!-- Last Name -->
+          <div class="form-group mb-2">
+            <label class="form-label"> Last Name:</label>
+            <input class="form-control" type="text" name="lastName" id="lastName" [(ngModel)]="employee.lastName" />
+          </div>
+          <!-- Email -->
+          <div class="form-group mb-2">
+            <label class="form-label"> Email:</label>
+            <input class="form-control" type="text" name="email" id="email" [(ngModel)]="employee.email" />
+
+          </div>
+          <Button class="btn btn-success">
+            Save Employee
+          </Button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
