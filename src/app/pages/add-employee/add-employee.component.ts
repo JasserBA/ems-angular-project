@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Employee } from 'src/app/class/employee';
+import { EmployeeService } from 'src/app/service/employee.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -7,13 +9,23 @@ import { Employee } from 'src/app/class/employee';
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-  employee: Employee = new Employee()
-  constructor() { }
+  newEmployee: Employee = new Employee()
+  constructor(private emplService: EmployeeService, private router: Router) { }
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    console.log(this.employee);
+  private saveEmployee() {
+    this.emplService.addEmployee(this.newEmployee).subscribe((data) => {
+      console.log(data);
+    }, error => console.error(error))
+    this.navigateToEmployeeList()
+  }
 
+  private navigateToEmployeeList() {
+    this.router.navigate(["/employees"])
+  }
+  onSubmit() {
+    // console.log(this.newEmployee);
+    this.saveEmployee()
   }
 }
