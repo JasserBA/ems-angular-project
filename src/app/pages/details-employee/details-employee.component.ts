@@ -15,9 +15,10 @@ export class DetailsEmployeeComponent implements OnInit {
   constructor(private empService: EmployeeService, private activRoute: ActivatedRoute) { }
   ngOnInit(): void {
     this.id = this.activRoute.snapshot.params['id']
-    this.empService.getEmployeeById(this.id).subscribe(data => {
-      this.employee = data
-    }, err => console.error(err))
+    this.empService.getEmployeeById(this.id).subscribe({
+      next: (data) => console.log(data),
+      error: (err) => console.error(err)
+    })
   }
 
 

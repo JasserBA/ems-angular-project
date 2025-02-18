@@ -110,8 +110,9 @@ export class EmployeeListComponent implements OnInit {
   }
 
   private getEmployees() {
-    this.empService.getEmployeeList().subscribe(data => {
-      this.employees = data
+    this.empService.getEmployeeList().subscribe({
+      next: (data) => this.employees = data,
+      error: (err) => console.error(err)
     })
   }
 
@@ -121,10 +122,13 @@ export class EmployeeListComponent implements OnInit {
 
   deleteEmployee(id: number) {
     if (confirm(`Are you sure want to delete this user's ID? ${id}`)) {
-      this.empService.deleteEmployee(id).subscribe(data => {
-        // console.log(data)
-        this.getEmployees();
-      }, err => console.error(err))
+      this.empService.deleteEmployee(id).subscribe({
+        next: (data) => {
+          // console.log(data)
+          this.getEmployees();
+        },
+        error: (err) => console.error(err)
+      })
     }
   }
 

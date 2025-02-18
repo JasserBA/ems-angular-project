@@ -15,9 +15,10 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   private saveEmployee() {
-    this.emplService.addEmployee(this.newEmployee).subscribe((data) => {
-      console.log(data);
-    }, error => console.error(error))
+    this.emplService.addEmployee(this.newEmployee).subscribe({
+      next: (data) => console.log(data),
+      error: (err) => console.error(err)
+    });
     this.navigateToEmployeeList()
   }
 
