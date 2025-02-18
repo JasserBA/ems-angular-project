@@ -123,8 +123,7 @@ export class EmployeeListComponent implements OnInit {
   deleteEmployee(id: number) {
     if (confirm(`Are you sure want to delete this user's ID? ${id}`)) {
       this.empService.deleteEmployee(id).subscribe({
-        next: (data) => {
-          // console.log(data)
+        next: () => {
           this.getEmployees();
         },
         error: (err) => console.error(err)
